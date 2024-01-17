@@ -2,7 +2,9 @@
 
 sleep 1s
 
+mkdir /cm0102/.vnc
 
 Xvfb :99 &
 DISPLAY=:99 wine $WINEPREFIX/dosdevices/d:/setup.exe -nosound &
-x11vnc -display :99 -forever
+x11vnc -storepasswd $VNCPASSWORD /cm0102/.vnc/passwd &
+x0vncserver -passwordfile /cm0102/.vnc/passwd -display :99
